@@ -1,7 +1,7 @@
 # 1949: [모의 SW 역량테스트] 등산로 조성
 # https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PoOKKAPIDFAUq&categoryId=AV5PoOKKAPIDFAUq&categoryType=CODE&problemTitle=%EB%AA%A8%EC%9D%98&orderBy=INQUERY_COUNT&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1
 """
-    1. 한 가장 높은 봉우리에 적용
+    1. 가장 높은 봉우리에 각각 적용
         1-1. 한 봉우리에서 사방탐색을 하여 기존 좌표보다 새 좌표가 낮으면 다음 가능한 좌표 재귀로 호출
         1-2. 한 봉우리에서 사방탐색을 하여 기존 좌표보다 새 좌표가 같거나 높으면 한 번 깎기
 """

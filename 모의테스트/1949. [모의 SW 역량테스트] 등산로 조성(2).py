@@ -5,20 +5,36 @@ from collections import deque
 import sys
 input= sys.stdin.readline
 
-def bfs():
+"""
+    1. 한 가장 높은 봉우리에 적용
+        1-1. 한 봉우리에서 사방탐색을 하여 기존 좌표보다 새 좌표가 낮으면 킵고잉
+        1-2. 한 봉우리에서 사방탐색을 하여 기존 좌표보다 새 좌표가 같거나 높으면 한번깎기
+    2
+"""
 
-    return
+def backtracking(is_carve, x, y, length, maps):
+    global N, K, max_length, visited
+    max_length= max(max_length, length)
 
-def backtracking(is_carve, carve_x, carve_y, x, y):
-    global K
+    for dir in dirs:
+        newx, newy= x + dir[0], y + dir[1]
+        if 0 < newx or newx >= N or 0 < newy or newy >= N: continue
+        new_value= maps[newx][newy]
+        if maps[x][y] > new_value:
+            backtracking(is_carve, newx, newy, length+1, maps)
+        else:
+            if not is_carve:
+
+
 
     return
 
 TC= int(input())
 for test_case in range(1, TC+1):
-    answer= 0
+    max_length= 0
     highest_lands= [] # 가장 높은 봉우리를 가진 부지의 좌표
     highest_depth= 0 # 가장 높은 봉우리
+
     N, K= map(int, input().split())
     maps= []
     for i in range(N):
@@ -31,7 +47,11 @@ for test_case in range(1, TC+1):
                 highest_lands.append([i, j])
         maps.append(tmps)
 
-    for highest_land in highest_lands:
-        backtracking(False, 0, 0, highest_land[0], highest_land[1])
 
-    print(f'#{test_case} {answer}')
+    for highest_land in highest_lands:
+        visited = [[False] * N for _ in range(N)]
+        visited[highest_land[0]][highest_land[1]]= True
+        backtracking(False, highest_land[0], highest_land[1], 0, maps)
+
+    print(f'#{test_case} {max_length}')
+
